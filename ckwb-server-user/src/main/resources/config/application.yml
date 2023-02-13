@@ -1,0 +1,91 @@
+spring:
+  profiles:
+    active: wangluo
+---
+server:
+  port: 8082
+  servlet:
+    session:
+      timeout: 30m
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://bj-cynosdbmysql-grp-8glorvhy.sql.tencentcdb.com:20549/ckwb?useUnicode=true&useSSL=false&characterEncoding=utf8
+    username: goodhang
+    password: goodhang99.
+    hikari:
+      pool-name: DateHikariCP
+      minimum-idle: 5
+      idle-timeout: 180000
+      maximum-pool-size: 10
+      auto-commit: true
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+  profiles: wangluo #配置环境的名称
+#mybatis-plus配置
+mybatis-plus:
+  #配置Mapper映射文件
+  mapper-locations: classpath*:/mapper/*.xml
+  # 配置Mybatis数据返回类型别名（默认别名为类名）
+  type-aliases-package: com.goodhang.service.pojo
+  configuration:
+    # 自动驼峰命名
+    map-underscore-to-camel-case: false
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#jwt
+jwt:
+  #请求头
+  tokenHeader: Authorization
+  #jwt加密使用的密匙
+  secret: ckwb-server-user
+  #jwt 超限时间
+  expiration: 604800
+  #jwt负载中拿到的开头
+  tokenHead: Bearer
+
+
+---
+server:
+  port: 8082
+  servlet:
+    session:
+      timeout: 30m
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ckwb?useUnicode=true&useSSL=false&characterEncoding=utf8
+    username: root
+    password: root
+    hikari:
+      pool-name: DateHikariCP
+      minimum-idle: 5
+      idle-timeout: 180000
+      maximum-pool-size: 10
+      auto-commit: true
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+  profiles: bendi #配置环境的名称
+#mybatis-plus配置
+mybatis-plus:
+  #配置Mapper映射文件
+  mapper-locations: classpath*:/mapper/*.xml
+  # 配置Mybatis数据返回类型别名（默认别名为类名）
+  type-aliases-package: com.goodhang.service.pojo
+  configuration:
+    # 自动驼峰命名
+    map-underscore-to-camel-case: false
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#jwt
+jwt:
+  #请求头
+  tokenHeader: Authorization
+  #jwt加密使用的密匙
+  secret: ckwb-server-user
+  #jwt 超限时间
+  expiration: 604800
+  #jwt负载中拿到的开头
+  tokenHead: Bearer
+

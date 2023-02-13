@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache updateCheck="false" name="defaultCache">
+    <!-- 磁盘缓存位置 -->
+    <diskStore path="java.io.tmpdir/ehcache"/>
+    <!--
+            maxEntriesLocalHeap:堆内存中最大缓存对象数
+            eternal:对象是否永久有效，一但设置了，timeout将不起作用
+            overflowToDisk:当缓存达到maxElementsInMemory值是,是否允许溢出到磁盘
+            timeToIdleSeconds:当缓存闲置n秒后销毁
+            timeToLiveSeconds:当缓存存活n秒后销毁
+            maxEntriesLocalDisk:硬盘最大缓存个数
+            diskPersistent:磁盘缓存在JVM重新启动时是否保持
+         -->
+    <!-- 默认缓存 -->
+    <defaultCache
+            maxEntriesLocalHeap="10000"
+            eternal="false"
+            timeToIdleSeconds="600"
+            timeToLiveSeconds="600"
+            maxEntriesLocalDisk="10000000"
+            diskExpiryThreadIntervalSeconds="120"
+            memoryStoreEvictionPolicy="LRU"/>
+
+    <!-- fill-in缓存 -->
+    <cache name="fillIn"
+           maxElementsInMemory="10000"
+           eternal="false"
+           timeToIdleSeconds="600"
+           timeToLiveSeconds="600"
+           overflowToDisk="false"
+           memoryStoreEvictionPolicy="LRU"/>
+
+</ehcache>

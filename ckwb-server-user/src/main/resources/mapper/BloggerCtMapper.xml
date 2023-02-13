@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.goodhang.service.mapper.BloggerCtMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.goodhang.service.pojo.BloggerCt">
+        <id column="Id" property="Id" />
+        <result column="blogger_id" property="bloggerId" />
+        <result column="user_info_id" property="userInfoId" />
+        <result column="blogger_ct_text" property="bloggerCtText" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        Id, blogger_id, user_info_id, blogger_ct_text
+    </sql>
+
+</mapper>
